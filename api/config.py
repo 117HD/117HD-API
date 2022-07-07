@@ -3,6 +3,7 @@ import logging
 import os
 import sys
 import warnings
+import aioredis
 
 # import logging_loki
 from dotenv import find_dotenv, load_dotenv
@@ -12,6 +13,12 @@ from fastapi.middleware.cors import CORSMiddleware
 # load environment variables
 load_dotenv(find_dotenv(), verbose=True)
 sql_uri = os.environ.get("sql_uri")
+redis_password = os.environ.get("redis_password")
+
+redis_client = aioredis.from_url(
+    url="redis://143.244.183.248", port=6379, db=0, password=redis_password
+)
+
 # create application
 app = FastAPI()
 
