@@ -11,6 +11,7 @@ jobs:
     - name: Set Up ENV
       run: |
           echo "${{ secrets.SQL_URI }}" > .env
+          echo "${{ secrets.REDIS_PASSWORD }}" >> .env
   deploy:
     runs-on: self-hosted
     needs: [checkout]

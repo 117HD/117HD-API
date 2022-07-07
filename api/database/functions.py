@@ -14,13 +14,6 @@ from typing import List, Optional
 import pandas as pd
 import requests
 from api.database.database import USERDATA_ENGINE, Engine, EngineType
-from api.database.models import (
-    ActiveMatches,
-    UserQueue,
-    Users,
-    UserToken,
-    WorldInformation,
-)
 from fastapi import HTTPException
 from mysqlx import UpdateStatement
 from pydantic import BaseModel
