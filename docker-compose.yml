@@ -5,7 +5,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    image: 117HD-api:latest
+    image: 117hd-api:latest
     ports:
       - "5000:5000"
     env_file:
