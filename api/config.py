@@ -12,16 +12,35 @@ from fastapi.middleware.cors import CORSMiddleware
 
 # load environment variables
 load_dotenv(find_dotenv(), verbose=True)
-sql_uri = os.environ.get("sql_uri")
-redis_password = os.environ.get("redis_password")
+
+
+class Configuration:
+    def __init__(self):
+        self.sql_uri = os.environ.get("sql_uri")
+        self.REDIS_PASSWORD = os.environ.get("redis_password")
+        self.REDIS_DATABASE = os.environ.get("redis_database")
+        self.REDIS_PORT = int(os.environ.get("redis_port"))
+        self.API_VERSION = os.environ.get("api_version")
+
+
+configVars = Configuration()
 
 redis_client = aioredis.from_url(
-    url="redis://143.244.183.248", port=6379, db=0, password=redis_password
+    url="redis://51.89.216.169",
+    port=configVars.REDIS_PORT,
+    db=configVars.REDIS_DATABASE,
+    password=configVars.REDIS_PASSWORD,
 )
 
 # create application
-app = FastAPI()
-
+app = FastAPI(
+    title="117HD-API",
+    version=f"{configVars.API_VERSION}",
+    contact={
+        "name": "117HD-API",
+        "url": "https://discord.gg/U4p6ChjgSE",
+    },
+)
 
 app.add_middleware(
     CORSMiddleware,

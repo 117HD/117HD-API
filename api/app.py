@@ -8,8 +8,18 @@ import aioredis
 logger = logging.getLogger(__name__)
 
 
+@app.on_event("startup")
+async def startup():
+    # declare api start
+    logger.info(f"STARTED 117HD-API")
+
+    # check redis server
+    if await redis_client.ping():
+        logger.info("REDIS SERVER CONNECTED!")
+    else:
+        logger.fatal("REDIS SERVER IS NOT ACCESSIBLE!")
+
+
 @app.get("/")
 async def root():
-    await redis_client.incr(name="visits")
-    visits = await redis_client.get(name="visits")
-    return {"message": f"Welcome to the 117HD-API! Visited {int(visits)} times!"}
+    return {"message": f"Welcome to the 117HD-API!"}
