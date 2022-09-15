@@ -23,7 +23,7 @@ class Engine:
         set class connection string
         """
         if type == EngineType.USERDATA:
-            connection_string = config.sql_uri
+            connection_string = config.configVars.sql_uri
         else:
             raise ValueError(f"Engine type {type} not valid.")
         return connection_string
@@ -41,10 +41,7 @@ class Engine:
 
     def __get_session_factory(self, engine) -> sessionmaker:
         # self.engine.echo = True
-        session = sessionmaker(
-            engine,
-            class_=AsyncSession,
-            expire_on_commit=False)
+        session = sessionmaker(engine, class_=AsyncSession, expire_on_commit=False)
         return session
 
     @asynccontextmanager
