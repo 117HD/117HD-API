@@ -26,7 +26,7 @@ class Configuration:
 configVars = Configuration()
 
 redis_client = aioredis.from_url(
-    url="redis://51.89.216.169",
+    url="redis://51.222.26.162",
     port=configVars.REDIS_PORT,
     db=configVars.REDIS_DATABASE,
     password=configVars.REDIS_PASSWORD,
