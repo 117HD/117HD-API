@@ -20,6 +20,12 @@ async def startup():
         logger.fatal("REDIS SERVER IS NOT ACCESSIBLE!")
 
 
+@app.on_event("shutdown")
+async def shutdown():
+    # declare api shutdown
+    logger.info(f"SHUTDOWN 117HD-API")
+
+
 @app.get("/")
 async def root():
     return {"message": f"Welcome to the 117HD-API!"}
