@@ -10,10 +10,7 @@ import api.database.functions as functions
 
 @pytest.mark.asyncio
 async def test_rsn():
-    # Passing case
     assert await functions.is_valid_rsn("Ferrariic") == True
-
-    # Failing Case
     with pytest.raises(fastapi.exceptions.HTTPException) as exc_info:
         assert await functions.is_valid_rsn("$$$$$$$$") == isinstance(
             exc_info.value, fastapi.exceptions.HTTPException
