@@ -75,7 +75,7 @@ async def post_gpu(gpu: str, request: Request) -> json:
 
 
 @router.get("/v1/gpu/get", tags=["LOGGING"])
-async def get_gpu(request: Request, gpu=None) -> json:
+async def get_gpu(request: Request, gpu: str = None) -> json:
     if gpu:
         data = await redis_client.get(f"gpu:{gpu}")
         data = int(data)
