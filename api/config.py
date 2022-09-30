@@ -21,6 +21,8 @@ class Configuration:
         self.REDIS_DATABASE = os.environ.get("redis_database")
         self.REDIS_PORT = int(os.environ.get("redis_port"))
         self.API_VERSION = os.environ.get("api_version")
+        self.RATE_LIMIT_MINUTE = 30
+        self.RATE_LIMIT_HOUR = 30 * 60
 
 
 configVars = Configuration()

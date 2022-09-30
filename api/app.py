@@ -4,8 +4,11 @@ import api.database.functions as functions
 from api.config import app, redis_client
 import logging
 import aioredis
+from api.routers import submission
 
 logger = logging.getLogger(__name__)
+
+app.include_router(submission.router)
 
 
 @app.on_event("startup")
