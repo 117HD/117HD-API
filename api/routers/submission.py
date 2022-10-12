@@ -38,11 +38,31 @@ class PluginInformation(BaseModel):
     error: str
 
 
+class WorldInformation(BaseModel):
+    """information about the world and region"""
+
+    world_x: int
+    world_y: int
+    plane: int
+    region: int
+    total_polygons: int
+    total_lights: int
+    players_on_screen: int
+
+
+class GeneralInformation(BaseModel):
+    """general information about the error instance"""
+
+    gamestate: str
+
+
 class submission(BaseModel):
     timestamp: Optional[int]  # will be overwritten
     discord: Optional[DiscordInformation]
     system: SystemInformation
     plugin: PluginInformation
+    general: GeneralInformation
+    world: WorldInformation
 
 
 @router.post("/v1/error-submission/post", tags=["LOGGING"])
