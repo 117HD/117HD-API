@@ -8,4 +8,4 @@ Formatting the following routes should be done in this hierarchy to maintain con
 
 Example: {ROOT}/API/V1/users/request-history | This indicates the request history sub-topic of the users group, on version 1 of the main branch.
 
-Kebab case should be used in all cases, lowercase for everything but API/DEV/V
+Kebab case should be used in all cases, lowercase for everything but API/DEV/V1
